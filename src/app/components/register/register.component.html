@@ -1,0 +1,95 @@
+<div class="container text-center">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-6">
+            <h2 [style]="fonts">Register To OPL</h2>
+            
+            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+              <mat-form-field class="example-full-width pb-1">
+                <mat-label>ID</mat-label>
+                <input type="email" matInput formControlName="id" name="id" id="id" placeholder="Ex. 201234BECE">
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')  && loginForm.get('email')?.touched">
+                  ID is <strong>required</strong>
+                </mat-error>
+              </mat-form-field> 
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="email" name="email" id="email" placeholder="Ex. pat@example.com">
+                  <mat-error *ngIf="loginForm.get('email')?.hasError('email')  && loginForm.get('email')?.touched">
+                    Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="loginForm.get('email')?.hasError('required')  && loginForm.get('email')?.touched">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Username</mat-label>
+                  <input type="text" matInput formControlName="username" name="username" id="username" formControlName="username" >
+                  
+                  <mat-error *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
+                    Username is required
+                  </mat-error>
+                  <mat-error *ngIf="loginForm.get('username')?.hasError('minlength') && loginForm.get('username')?.touched">
+                    Username must be at least 3 characters
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field  class="example-full-width pb-1">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" name="pwd" id="pwd" formControlName="pwd">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.get('pwd')?.hasError('required') && loginForm.get('pwd')?.touched">
+                      Password is required
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('pwd')?.hasError('minlength') && loginForm.get('pwd')?.touched">
+                      Password must be at least of 8 characters
+                    </mat-error>
+                   
+                    
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width pb-1">
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dob">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="loginForm.get('dob')?.hasError('required') && loginForm.get('dob')?.touched">
+                      Date of birth is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field  class="example-full-width mb-2" hintLabel="Max 10 characters">
+                    <mat-label>Enter Your Security Key</mat-label>
+                    <input matInput #input maxlength="10" formControlName="securityKey" name="securityKey" id="securityKey" placeholder="Ex. SecretKey">
+                    <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+                    <mat-error *ngIf="loginForm.get('securityKey')?.hasError('required') && loginForm.get('securityKey')?.touched">
+                      Security Key is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width" >
+                    <mat-label >Select Role</mat-label>
+                    <mat-select name="role" id="role" formControlName="role">
+                      <mat-option value="ROLE_ADMIN">Admin</mat-option>
+                      <mat-option value="ROLE_USER">User</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="loginForm.get('role')?.hasError('required') && loginForm.get('role')?.touched">
+                      Role is required
+                    </mat-error>
+                    
+                  </mat-form-field>
+                  <div class="d-flex flex-row justify-content-center align-items-center p-0" >
+
+                    <a routerLink="../login" class="ms-auto text-decoration-none">Already Registered?</a>
+                  </div>
+                  <button mat-button color="primary" [style]="btn" class="text-center" [disabled]="loginForm.invalid">SUBMIT</button>
+            </form>
+
+            
+
+        </div>
+
+    </div>
+   
+</div>
+
+
+
+<button mat-stroked-button *ngIf="isRegistrationSuccessful"  (click)="openSnackBar()" >
+</button>

@@ -1,0 +1,96 @@
+<div class="container text-center pb-4 ">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-6">
+            <h2 [style]="fonts">REGISTER ALL DETAILS</h2>
+            
+            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>ID</mat-label>
+                  <input type="text" matInput  name="id" id="id" [value]="loginForm.get('id')?.value" readonly >
+                
+                  
+                </mat-form-field> 
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Username</mat-label>
+                  <input type="text" matInput  name="username" id="username"
+                 [value]="loginForm.get('username')?.value" readonly >
+
+                </mat-form-field> 
+               
+                    <mat-label >Gender</mat-label>
+                    <mat-radio-group formControlName="gender" >
+                        <mat-radio-button value="male">Male</mat-radio-button>
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                      </mat-radio-group>
+                      <mat-error *ngIf="loginForm.get('gender')?.hasError('required') && loginForm.get('gender')?.touched">
+                        Gender is required
+                      </mat-error>
+               
+              
+                
+                  <mat-form-field class="example-full-width pb-1">
+                    <mat-label>Contact</mat-label>
+                    <input type="text" matInput name="contact" id="contact" formControlName="contact" pattern="[0-9]*" maxlength="10">
+                    <!-- Add pattern="[0-9]*" and maxlength="10" to enforce numeric input and maximum length validation -->
+                  
+                    <mat-error *ngIf="loginForm.get('contact')?.hasError('required') && loginForm.get('contact')?.touched">
+                      Contact is required
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('contact')?.hasError('pattern') && loginForm.get('contact')?.touched">
+                      Contact must contain only numbers
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('contact')?.hasError('invalidLength') && loginForm.get('contact')?.touched">
+                      Contact must be exactly 10 characters long
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width pb-1">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput formControlName="address" rows="3"></textarea>
+                  
+                    <mat-error *ngIf="loginForm.get('address')?.hasError('required') && loginForm.get('address')?.touched">
+                      Address is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width pb-1">
+                    <mat-label>Pincode</mat-label>
+                    <input type="text" matInput name="pinCode" id="pinCode" formControlName="pinCode"  pattern="[0-9]*"  maxlength="6" (input)="onPincodeInput()">
+                    <!-- Add pattern="[0-9]*" and maxlength="10" to enforce numeric input and maximum length validation -->
+                  
+                    <mat-error *ngIf="loginForm.get('pinCode')?.hasError('required') && loginForm.get('pinCode')?.touched">
+                      Pincode is required
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('contact')?.hasError('pattern') && loginForm.get('contact')?.touched">
+                      Pincode must contain only numbers
+                    </mat-error>
+    
+                    <mat-error *ngIf="loginForm.get('pinCode')?.hasError('invalidLength') && loginForm.get('pinCode')?.touched">
+                      Pincode must be exactly 6 numbers long
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width pb-1">
+                    <mat-label>City</mat-label>
+                    <input type="text" matInput name="city" id="city" formControlName="city" [value]="city" readonly>
+                  </mat-form-field>
+                  
+                  
+                  
+                  
+                  
+                  
+               
+                 
+                 
+                  <div class="d-flex flex-row justify-content-center align-items-center p-0" >
+
+                    <a routerLink="../admin" class="ms-auto text-decoration-none">Back?</a>
+                  </div>
+                  <button mat-button color="primary" [style]="btn" class="text-center" [disabled]="loginForm.invalid">SUBMIT</button>
+            </form>
+
+            
+
+        </div>
+
+    </div>
+   
+</div>

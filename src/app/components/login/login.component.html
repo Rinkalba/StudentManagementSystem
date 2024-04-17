@@ -1,0 +1,68 @@
+<div class="container text-center">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-6">
+            <h2 [style]="fonts">LOGIN To OPL</h2>
+            
+            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>ID</mat-label>
+                  <input type="text" matInput  name="id" id="id" formControlName="id" >
+                
+                  <mat-error *ngIf="loginForm.get('id')?.hasError('required') && loginForm.get('id')?.touched">
+                  ID is required
+                 </mat-error>
+                </mat-form-field> 
+                <mat-form-field class="example-full-width pb-1">
+                  <mat-label>Username</mat-label>
+                  <input type="text" matInput  name="username" id="username" formControlName="username" >
+                
+                  <mat-error *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('id')?.touched">
+                  Username is required
+                 </mat-error>
+                </mat-form-field> 
+                <mat-form-field  class="example-full-width pb-1">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="pwd">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  
+                    <mat-error *ngIf="loginForm.get('pwd')?.hasError('required') && loginForm.get('pwd')?.touched">
+                      Password is required
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('pwd')?.hasError('minlength') && loginForm.get('pwd')?.touched">
+                      Password must be at least of 8 characters
+                    </mat-error>
+                    
+                </mat-form-field>
+                <mat-form-field class="example-full-width" >
+                  <mat-label >Select Role</mat-label>
+                  <mat-select name="role" id="role" formControlName="role">
+                    <mat-option value="ROLE_ADMIN">Admin</mat-option>
+                    <mat-option value="ROLE_USER">User</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="loginForm.get('role')?.hasError('required') && loginForm.get('role')?.touched">
+                    Role is required
+                  </mat-error>
+                  
+                </mat-form-field>
+                 
+                 
+                  <div class="d-flex flex-row justify-content-center align-items-center p-0" >
+                    <a routerLink="../" class="text-decoration-none">
+                     <mat-icon><span class="material-symbols-outlined">
+                      arrow_back
+                      </span></mat-icon> 
+                    </a>
+                    <a routerLink="/forgot-password-link" class="ms-auto text-decoration-none" (click)="forgotClick()">Forgot Password?</a>
+                  </div>
+                  <button mat-button color="primary" [style]="btn" class="text-center" [disabled]="loginForm.invalid">SUBMIT</button>
+            </form>
+
+            
+
+        </div>  
+
+    </div>
+   
+</div>

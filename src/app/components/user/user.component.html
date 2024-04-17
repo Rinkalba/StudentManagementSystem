@@ -1,0 +1,187 @@
+<div class="container">
+    <h2 class="text-center mb-4" [style]="fonts">Bonjoure {{username}}</h2>
+
+    <mat-card>
+        <mat-card-content>
+    
+          <mat-tab-group>
+            <mat-tab>
+              
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon me-1"><span class="material-symbols-outlined">
+                    info
+                  </span>
+                </mat-icon>
+                All Details
+              </ng-template>
+              <div class="d-flex justify-content-center mt-5 mb-5" >
+                <mat-card class="w-50 position-relative" [style]="detailCard">
+                  <div class="example-button-container position-absolute top-0 start-100 translate-middle badge ">
+                    <button mat-mini-fab color="primary" aria-label="Example icon button with a home icon" routerLink="/userForm">
+                      <mat-icon><span class="material-symbols-outlined">add</span></mat-icon>
+                    </button>
+                  </div>
+                  
+                  <mat-card-content>
+  
+                    <div class="example-right" [style]="font" *ngIf="!useDetailFlag">
+                     <b>
+                      No Details Added! 
+                     </b> 
+                     <span>
+                      *add by clicking + button
+                    </span> 
+                    </div>
+                    <div class="example-right justify-content-start" [style]="font" *ngIf="useDetailFlag">
+                      <div class="row mb-3 mt-3">
+                        <div class="col-4">
+                          <span class="fw-bold me-2">ID</span> 
+                         {{userDetails.id}}
+                        </div>
+                        <div class="col-4">
+                          <span class="fw-bold">Username:</span> {{userDetails.username}}
+
+                        </div>
+                        <div class="col-4">
+
+                          <span class="fw-bold">Gender:</span> {{userDetails.gender}}
+                        </div>
+                      </div>
+                      
+                     
+                   
+                      
+                      <div class="row mb-3">
+                        <div class="col-4">
+                          <span class="fw-bold">Contact:</span> +91 {{userDetails.contact}}<br>
+                        </div>
+                        <div class="col-4">
+                          <span class="fw-bold">City:</span> {{userDetails.city}}<br>
+                        </div>
+                        <div class="col-4">
+                          <span class="fw-bold">Pincode:</span> {{userDetails.pinCode}}<br>
+                        </div>
+                      </div>
+                      
+                      <div class="row mb-3">
+                        <div class="col-4">
+                          <span class="fw-bold">DOB:</span> {{userDetails.dob|date}}<br>
+                        </div>
+                        <div class="col-4">
+                          <span class="fw-bold">Branch:</span> {{userDetails.branch}}<br>
+                        </div>
+                        <div class="col-4">
+
+                          <span class="fw-bold">Address:</span> {{userDetails.address}}<br>
+                        </div>
+                      </div>
+                      
+                  
+                      
+
+                     </div>
+                 
+                    
+                  </mat-card-content>
+                </mat-card>
+
+              </div>
+              
+          
+             
+            </mat-tab>
+         
+          
+              
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon me-1"><span class="material-symbols-outlined">
+                        school
+                        </span></mat-icon>
+                    Education Details
+                  </ng-template>
+                  <div class="d-flex justify-content-center mt-5 mb-5" >
+                    <mat-card class="w-50 position-relative" [style]="detailCard">
+                      <div class="example-button-container position-absolute top-0 start-100 translate-middle badge ">
+                        <button mat-mini-fab color="primary" aria-label="Example icon button with a home icon">
+                          <mat-icon><span class="material-symbols-outlined">add</span></mat-icon>
+                        </button>
+                      </div>
+                      
+                      <mat-card-content>
+      
+                        <div class="example-right" [style]="font" *ngIf="!educationDetailFlag">
+                         <b>
+                          No Details Added! 
+                         </b> 
+                         <span>
+                          *add by clicking + button
+                        </span> 
+                        </div>
+                        <div class="example-right justify-content-start" [style]="font" *ngIf="educationDetailFlag">
+                          <div class="row mb-3 mt-3">
+                            <div class="col-4">
+                              <span class="fw-bold me-2">ID</span> 
+                             {{educationDetails.id}}
+                            </div>
+                            <div class="col-4">
+                              <span class="fw-bold">Username:</span> {{educationDetails.username}}
+    
+                            </div>
+                            <div class="col-4">
+    
+                              <span class="fw-bold">Education Type:</span> {{educationDetails.educationType}}
+                            </div>
+                          </div>
+                          
+                         
+                       
+                          
+                          <div class="row mb-3">
+                            <div class="col-4">
+                              <span class="fw-bold">Percentage:</span> {{educationDetails.percentage}}<br>
+                            </div>
+                            <div class="col-4">
+                              <span class="fw-bold">Qualified:</span> {{educationDetails.qualified}}<br>
+                            </div>
+                            <div class="col-4">
+                              <span class="fw-bold">Updated By:</span> {{educationDetails.updatedBy}}<br>
+                            </div>
+                          </div>
+                          
+                          <div class="row mb-3">
+                          
+                            <div class="col-4">
+    
+                              <span class="fw-bold">Date of Updation:</span> {{educationDetails.updateDate}}<br>
+                            </div>
+                          </div>
+                          
+                      
+                          
+    
+                         </div>
+                     
+                        
+                      </mat-card-content>
+                    </mat-card>
+    
+                  </div>
+                </mat-tab>
+              
+                <mat-tab>
+                  <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon me-1"><span class="material-symbols-outlined">
+                        currency_rupee
+                        </span>
+                    </mat-icon>
+                    Fees Details
+                  </ng-template>
+              
+                  Content 3
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+</div>
+  

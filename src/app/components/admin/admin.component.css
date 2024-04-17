@@ -1,0 +1,25 @@
+.icon-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-icon {
+  background-color: #3f51b5; /* Background color */
+  color: white; /* Icon color */
+  border-radius: 50%; /* Make it circular */
+  padding: 6px; /* Adjust padding as needed */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; /* Adjust width and height as needed */
+  height: 32px;
+  font-size: medium;
+}
+
+.action-icon:hover {
+  background-color: #bfc1cc; /* Change background color on hover */
+}
+
